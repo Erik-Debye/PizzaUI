@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+    <title>Erik's Pizza</title>
+  </head>
+  <body>
+    <header id="header"></header>
+    <section id="app">
+      <div id="init-wrapper" class="flex-vt-wrap hidden">
+        <h1 id="instruction">Start Your Order!</h1>
+        <div class="stage-initial">
+          <button id="startOrder">Start Order</button>
+        </div>
+        <div id="method" class="flex-hz-wrap hidden">
+          <button id="delivery">Delivery</button>
+          <button id="pickup">Pick-Up</button>
+        </div>
+        <form id="form" class="hidden">
+          <h1>Enter your address below!</h1>
+          <div class="row">
+            <fieldset>
+              <label for="street">Street:<span>*</span></label>
+              <input
+                type="text"
+                name="street"
+                id="street"
+                size="45"
+                placeholder="333 E 16th Street"
+                pattern="[a-zA-Z0-9 ]*"
+                required
+              />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset>
+              <label for="street2">Street 2:</label>
+              <input type="text" name="street2" id="street2" size="10" placeholder="Apt 1" pattern="[a-zA-Z0-9 ]*" />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset class="city">
+              <label for="city">City:<span>*</span></label>
+              <input
+                type="text"
+                name="city"
+                id="city"
+                size="20"
+                placeholder="Baltimore"
+                pattern="[a-zA-Z]{3,}"
+                required
+              />
+            </fieldset>
+            <fieldset class="region">
+              <label for="region">State/Region:<span>*</span></label>
+              <input type="text" name="region" id="region" size="12" value="Maryland" pattern="[a-zA-Z]{3,}" required />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset class="postal">
+              <label for="postal">Postal/Zip Code:<span>*</span></label>
+              <input
+                type="text"
+                name="postal"
+                id="postal"
+                size="10"
+                placeholder="21048"
+                pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
+                required
+              />
+            </fieldset>
+            <button id="submit" type="submit">Submit</button>
+          </div>
+        </form>
+        <button id="ready" class="hidden">Create Your Order</button>
+      </div>
+      <div id="pizza-wrapper" class="flex-vt-wrap">
+        <h1 id="pizza-instruction">Create your pizza!</h1>
+        <form id="pizza-form">
+          <div class="row">
+            <fieldset id='radio-fieldset'>
+              <h2>Choose a size:</h2>
+              <input type="radio" name="size" id="16" value="16" required />
+              <label for="16">16 inches</label>
+              <input type="radio" name="size" id="18" value="18" required />
+              <label for="18">18 inches</label>
+              <input type="radio" name="size" id="20" value="20" required />
+              <label for="20">20 inches</label>
+              <input type="radio" name="size" id="24" value="24" required />
+              <label for="24">24 inches</label>
+            </fieldset>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>
