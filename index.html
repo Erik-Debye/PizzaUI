@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
     <script src="./app.js" defer></script>
     <title>Erik's Pizza</title>
   </head>
   <body>
-    <header id="header"></header>
     <section id="app">
-      <div id="init-wrapper" class="flex-vt-wrap">
+      <div id="init-wrapper" class="global-wrap">
         <h1 id="instruction">Start Your Order!</h1>
         <div class="stage-initial">
           <button id="startOrder">Start Order</button>
@@ -23,7 +22,7 @@
         <form id="form" class="hidden">
           <h1>Enter your address below!</h1>
           <div class="row">
-            <fieldset>
+            <fieldset class="fieldset-default">
               <label for="street">Street:<span>*</span></label>
               <input
                 type="text"
@@ -37,13 +36,13 @@
             </fieldset>
           </div>
           <div class="row">
-            <fieldset>
+            <fieldset class="fieldset-default">
               <label for="street2">Street 2:</label>
               <input type="text" name="street2" id="street2" size="10" placeholder="Apt 1" pattern="[a-zA-Z0-9 ]*" />
             </fieldset>
           </div>
           <div class="row">
-            <fieldset class="city">
+            <fieldset class="fieldset-default">
               <label for="city">City:<span>*</span></label>
               <input
                 type="text"
@@ -55,13 +54,13 @@
                 required
               />
             </fieldset>
-            <fieldset class="region">
+            <fieldset class="fieldset-default">
               <label for="region">State/Region:<span>*</span></label>
               <input type="text" name="region" id="region" size="12" value="Maryland" pattern="[a-zA-Z]{3,}" required />
             </fieldset>
           </div>
           <div class="row">
-            <fieldset class="postal">
+            <fieldset class="fieldset-default">
               <label for="postal">Postal/Zip Code:<span>*</span></label>
               <input
                 type="text"
@@ -73,27 +72,263 @@
                 required
               />
             </fieldset>
-            <button id="submit" type="submit">Submit</button>
           </div>
+          <button id="submit" type="submit">Submit</button>
         </form>
         <button id="ready" class="hidden">Create Your Order</button>
       </div>
-      <div id="pizza-wrapper" class="flex-vt-wrap hidden">
-        <h1 id="pizza-instruction">Create your pizza!</h1>
+      <div id="pizza-wrapper" class="global-wrap hidden">
+        <h1 id="instruction">Create your pizza!</h1>
         <form id="pizza-form">
-          <div class="row">
-            <fieldset id='radio-fieldset'>
-              <h2>Choose a size:</h2>
-              <input type="radio" name="size" id="16" value="16" required />
-              <label for="16">16 inches</label>
-              <input type="radio" name="size" id="18" value="18" required />
-              <label for="18">18 inches</label>
-              <input type="radio" name="size" id="20" value="20" required />
-              <label for="20">20 inches</label>
-              <input type="radio" name="size" id="24" value="24" required />
-              <label for="24">24 inches</label>
+          <!--Size-->
+          <div class="flex-vt-wrap">
+            <h2>Choose Your Pizza Size<span id="price">*</span></h2>
+            <fieldset class="fieldset-wrap">
+              <div class="input-btn">
+                <input type="radio" id="16" name="size" value="16" />
+                <label for="16">Small (16in) - $26.00</label>
+              </div>
+              <div class="input-btn">
+                <input type="radio" id="18" name="size" value="18" checked />
+                <label for="18">Medium (18in) - $29.00</label>
+              </div>
+              <div class="input-btn">
+                <input type="radio" id="20" name="size" value="20" />
+                <label for="20">Large (20in) - $33.00</label>
+              </div>
+              <div class="input-btn">
+                <input type="radio" id="24" name="size" value="24" />
+                <label for="24">Extra Large (24in) - $38.00</label>
+              </div>
             </fieldset>
           </div>
+          <!--Toppings-->
+          <div class="flex-vt-wrap">
+            <h2>Choose Your Toppings</h2>
+            <h3>Toppings Pricing</h3>
+            <div class="prices">
+              <h4>Small Pizza: $2.00/each</h4>
+              <h4>Medium Pizza: $2.75/each</h4>
+            </div>
+            <div class="prices">
+              <h4>Large Pizza: $3.25/each</h4>
+              <h4>Extra Large: $3.75/each</h4>
+            </div>
+            <fieldset class="fieldset-wrap">
+              <div class="input-btn">
+                <input type="checkbox" id="sausage" name="toppings" value="sausage" />
+                <label for="sausage">Sausage</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="vegan" name="toppings" value="vegan" />
+                <label for="vegan">Vegan Sausage</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="pepperoni" name="toppings" value="pepperoni" />
+                <label for="pepperoni">Sliced Pepperoni</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="basil" name="toppings" value="basil" />
+                <label for="basil">Basil</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="garlic" name="toppings" value="garlic" />
+                <label for="garlic">Garlic</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="Mushroom" name="toppings" value="Mushroom" />
+                <label for="Mushroom">Mushroom</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="suntomato" name="toppings" value="suntomato" />
+                <label for="suntomato">Sun-Dried Tomatoes</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="slicetomato" name="toppings" value="slicetomato" />
+                <label for="slicetomato">Tomato Slices</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="olives" name="toppings" value="olives" />
+                <label for="olives">Olives</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="onions" name="toppings" value="onions" />
+                <label for="onions">Onions</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="spinach" name="toppings" value="spinach" />
+                <label for="spinach">Spinach</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="pineapple" name="toppings" value="pineapple" />
+                <label for="pineapple">Pineapple</label>
+              </div>
+              <div class="input-btn">
+                <input type="checkbox" id="ham" name="toppings" value="ham" />
+                <label for="ham">Ham</label>
+              </div>
+            </fieldset>
+          </div>
+          <!--Sauces-->
+          <div class="flex-vt-wrap">
+            <h2>Choose Your Sauce<span id="price">*</span></h2>
+            <fieldset class="fieldset-wrap">
+              <div class="input-btn">
+                <input type="radio" id="tomato" name="sauce" value="tomato" checked />
+                <label for="tomato">Tomato Sauce</label>
+              </div>
+              <div class="input-btn">
+                <input type="radio" id="white" name="sauce" value="white" />
+                <label for="white">White Sauce (Alfredo)</label>
+              </div>
+              <div class="input-btn">
+                <input type="radio" id="oil" name="sauce" value="oil" />
+                <label for="oil">Olive Oil</label>
+              </div>
+            </fieldset>
+          </div>
+          <div class="final-prices">
+            <h2>Price: <span id="price-regular">$29.00</span></h2>
+            <h2>Price with Tax (10%): <span id="price-tax">$31.90</span></h2>
+          </div>
+          <button id="submit" type="submit">Submit</button>
+        </form>
+      </div>
+      <div id="checkout-wrapper" class="global-wrap hidden">
+        <h1 id="instruction">Please Choose an Option Below</h1>
+        <div id="method" class="flex-hz-wrap">
+          <button id="resetform">Create Another Pizza</button>
+          <button id="checkout">Checkout</button>
+        </div>
+      </div>
+      <div id="customer-wrapper" class="global-wrap hidden">
+        <h1 id="instruction">Please Enter Your Information Below</h1>
+        <form id="form-pickup" class="hidden">
+          <div class="row">
+            <fieldset class="fieldset-default">
+              <label for="fname">First Name:<span>*</span></label>
+              <input type="text" name="fname" id="fname" size="12" placeholder="James" required />
+            </fieldset>
+            <fieldset class="fieldset-default">
+              <label for="lname">Last Name:<span>*</span></label>
+              <input
+                type="text"
+                name="lname"
+                id="lname"
+                size="15"
+                placeholder="Rabe"
+                pattern="[a-zA-Z0-9 ]*"
+                required
+              />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset class="fieldset-default">
+              <label for="email">Email Address:<span>*</span></label>
+              <input type="text" name="email" id="email" size="20" placeholder="j.rabe@rabe.com" required />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset class="fieldset-default">
+              <label for="street">Street:<span>*</span></label>
+              <input
+                type="text"
+                name="street"
+                id="street"
+                size="45"
+                placeholder="333 E 16th Street"
+                pattern="[a-zA-Z0-9 ]*"
+                required
+              />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset class="fieldset-default">
+              <label for="street2">Street 2:</label>
+              <input type="text" name="street2" id="street2" size="10" placeholder="Apt 1" pattern="[a-zA-Z0-9 ]*" />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset class="fieldset-default">
+              <label for="city">City:<span>*</span></label>
+              <input
+                type="text"
+                name="city"
+                id="city"
+                size="20"
+                placeholder="Baltimore"
+                pattern="[a-zA-Z]{3,}"
+                required
+              />
+            </fieldset>
+            <fieldset class="fieldset-default">
+              <label for="region">State/Region:<span>*</span></label>
+              <input type="text" name="region" id="region" size="12" value="Maryland" pattern="[a-zA-Z]{3,}" required />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset class="fieldset-default">
+              <label for="postal">Postal/Zip Code:<span>*</span></label>
+              <input
+                type="text"
+                name="postal"
+                id="postal"
+                size="10"
+                placeholder="21048"
+                pattern="^\s*?\d{5}(?:[-\s]\d{4})?\s*?$"
+                required
+              />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset class="fieldset-default--textarea">
+              <label for="comments">Comments:</label>
+              <textarea type="text" name="comments" id="comments"></textarea>
+            </fieldset>
+          </div>
+          <button id="submit-pickup" type="submit">Submit</button>
+        </form>
+        <form id="form-delivery" class="hidden">
+          <div class="row">
+            <fieldset class="fieldset-default">
+              <label for="fname">First Name:<span>*</span></label>
+              <input type="text" name="fname" id="fname" size="12" placeholder="James" required />
+            </fieldset>
+            <fieldset class="fieldset-default">
+              <label for="lname">Last Name:<span>*</span></label>
+              <input
+                type="text"
+                name="lname"
+                id="lname"
+                size="15"
+                placeholder="Rabe"
+                pattern="[a-zA-Z0-9 ]*"
+                required
+              />
+            </fieldset>
+          </div>
+          <div class="row">
+            <fieldset class="fieldset-default">
+              <label for="email">Email Address:<span>*</span></label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                size="38"
+                placeholder="j.rabe@rabe.com"
+                pattern="[a-zA-Z0-9 ]*"
+                required
+              />
+            </fieldset>
+          </div>
+
+          <div class="row">
+            <fieldset class="fieldset-default--textarea">
+              <label for="comments">Comments:</label>
+              <textarea type="text" name="comments" id="comments"></textarea>
+            </fieldset>
+          </div>
+          <button id="submit-delivery" type="submit">Submit</button>
         </form>
       </div>
     </section>
